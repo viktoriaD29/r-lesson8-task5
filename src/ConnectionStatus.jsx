@@ -8,6 +8,10 @@ import React from 'react';
 //5. у функції onOnline видаляємо клас .status__offline +++
 
 class ConnectionStatus extends React.Component {
+  state = {
+    online: true,
+    offline: false,
+  };
 
   componentDidMount() {
     window.addEventListener('online', this.onOnline);
@@ -20,15 +24,27 @@ class ConnectionStatus extends React.Component {
   }
 
   onOnline = () => {
-    document.querySelector('.status').classList.removeClass('status_offline');
-  }
+    this.setState({
+      online: true,
+      offline: false,
+    });
+
+    document.querySelector('.status').classList.remove('status_offline');
+  };
 
   onOffline = () => {
+    this.setState({
+      online: false,
+      offline: true,
+    });
+
     document.querySelector('.status').classList.add('status_offline');
-  }
+  };
 
   render() {
-    return <div className="status">Offline</div>;
+    return (
+      <div className="status">{this.state.online ? 'online' : 'offline'}</div>
+    );
   }
 }
 
