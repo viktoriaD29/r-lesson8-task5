@@ -4,8 +4,9 @@ import React from 'react';
 //1. state містить online (true за замовчуваннм) , offline +++
 //2. в методі componentDidMount() відловлюємо зміну статусу (вішаємо два обробники подій на window -online, offline) +++
 //3. відписуємось від події перед тим як компонента видалиться за допомогою методу componentWillUnmount() +++
-//4. у функції onOffline додаємо клас до діва .status__offline +++
-//5. у функції onOnline видаляємо клас .status__offline +++
+//4. відмалювуємо дів в залежності від статусу
+
+//в реакті ми не можемо мотифікувати ДОМ, це груба помилка, бо цим займається сам реакт, треба логіку додавання і видалення класу робити в методі render
 
 class ConnectionStatus extends React.Component {
   constructor(props) {
